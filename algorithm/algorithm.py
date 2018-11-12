@@ -2,177 +2,122 @@
 
 import pandas as pd
 import numpy as np
-
+import time
 from typing import Any, Union, List, Iterable
 
-input = pd.read_excel('input.xlsx')
-output = pd.read_excel('output.xlsx')
+##time measuring
+start = time.time()
 
-#add another column 'score'
+input = pd.read_excel('input.xlsx')
+output = pd.read_excel('output2.xlsx')
+
+# add another column 'score'
 output['score'] = 0
 
-input_name = input['name']
-input_category = input['category']
-input_main1 = input['main1']
-input_main2 = input['main2']
-input_main3 = input['main3']
-input_sub1 = input['sub1']
-output_name = output['name']
-output_category = output['category']
-output_main1 = output['main1']
-output_main2 = output['main2']
-output_main3 = output['main3']
-output_sub1 = output['sub1']
-temp = []
-temp2 = []  # type: List[Any]
-
-print(input)
-print(output)
+input_name = input['Name']
+input_URL = input['ImageURL']
+input_detail = input['detail']
+input_category = input['Category']
+input_category2 = input['Category2']
+input_main1 = input['MainIngredient1']
+input_main2 = input['MainIngredient2']
+input_main3 = input['MainIngredient3']
+input_sub1 = input['SubIngredient1']
+output_name = output['Name']
+output_detail = output['detail']
+output_URL = output['ImageURL']
+output_category = output['Category']
+output_category2 = output['Category2']
+output_main1 = output['MainIngredient1']
+output_main2 = output['MainIngredient2']
+output_main3 = output['MainIngredient3']
+output_sub1 = output['SubIngredient1']
+categorized = output
 
 ##Categorizing
 for i in input_category:
     for j in output_category:
         if i == j:
             temp = np.where(output_category != j)
+if len(temp) > 0:
+    categorized = output.drop(temp[0], 0)
+    categorized = categorized.reset_index(drop=True)
 
-categorized = output.drop(temp[0],0)
-categorized = categorized.reset_index(drop=True)
+
+##Category 2
+if input_category2 is not None:
+    for i in input_category2:
+        for j in categorized['Category2']:
+                temp = np.where(categorized['Category2'] == i)
 
 
-print(categorized)
-
-temp = []
+if len(temp) > 0:
+    categorized['score'][temp[0]] += 20
 
 ##Main1
 for i in input_main1:
-    for j in categorized['main1']:
-        if i == j:
-            temp = np.where(categorized['main1'] == i)
-        else:
-            temp2 = np.where(categorized['main1'] != i)
+    temp = np.where(categorized['MainIngredient1'] == i)
+    temp2 = np.where(categorized['MainIngredient1'] != i)
 
-
-categorized['score'][temp[0]] += 30
-categorized['score'][temp2[0]] += 5
-
-
-print(categorized)
-
-temp = []
-temp2 = []
+if len(temp) > 0:
+    categorized['score'][temp[0]] += 30
+if len(temp2) > 0:
+    categorized['score'][temp2[0]] += 5
 
 ##Main2
 for i in input_main2:
-    for j in categorized['main2']:
-        if i == j:
-            temp = np.where(categorized['main2'] == i)
-        else:
-            temp2 = np.where(categorized['main2'] != i)
+        temp = np.where(categorized['MainIngredient2'] == i)
+        temp2 = np.where(categorized['MainIngredient2'] != i)
 
-print(temp)
-print(temp2)
-
-
-categorized['score'][temp[0]] += 20
-categorized['score'][temp2[0]] += 5
-
-print('MAIN2222')
-print(input)
-print(categorized)
-
-
-temp = []
-temp2 = []
+if len(temp) > 0:
+    categorized['score'][temp[0]] += 20
+if len(temp2) > 0:
+    categorized['score'][temp2[0]] += 5
 
 ##Main2 & 3 comparing
 for i in input_main2:
-    for j in categorized['main3']:
-        if i == j:
-            temp = np.where(categorized['main3'] == i)
-        else:
-            temp2 = np.where(categorized['main3'] != i)
+    temp = np.where(categorized['MainIngredient3'] == i)
+    temp2 = np.where(categorized['MainIngredient3'] != i)
 
-if temp or temp2 == True:
+if len(temp) > 0:
     categorized['score'][temp[0]] += 7
-    categorized['score'][temp2[0]] += 0
-
-
-print(temp)
-print(temp2)
-print('MAIN23')
-print(input)
-print(categorized)
-
-temp = []
-temp2 = []
-
 
 ##Main3
 for i in input_main3:
-    for j in categorized['main3']:
-        if i == j:
-            temp = np.where(categorized['main3'] == i)
-        else:
-            temp2 = np.where(categorized['main3'] != i)
+        temp = np.where(categorized['MainIngredient3'] == i)
+        temp2 = np.where(categorized['MainIngredient3'] != i)
 
-
-if temp or temp2 == True:
+if len(temp) > 0:
     categorized['score'][temp[0]] += 10
+if len(temp2) > 0:
     categorized['score'][temp2[0]] += 5
-
-print('MAIN333')
-print(input)
-print(categorized)
-
-
-temp = []
-temp2 = []
 
 ##Main3 & 2 comparing
 for i in input_main3:
-    for j in categorized['main2']:
-        if i == j:
-            temp = np.where(categorized['main2'] == i)
+    temp = np.where(categorized['MainIngredient2'] == i)
 
-if temp or temp2 == True:
+if len(temp) > 0:
     categorized['score'][temp[0]] += 4
-    categorized['score'][temp2[0]] += 0
-
-temp = []
-temp2 = []
 
 ##Sub1
 for i in input_sub1:
-    for j in categorized['sub1']:
-        if i == j:
-            temp = np.where(categorized['sub1'] == i)
-        else:
-            temp2 = np.where(categorized['sub1'] != i)
+    temp = np.where(categorized['SubIngredient1'] == i)
+    temp2 = np.where(categorized['SubIngredient1'] != i)
 
+if len(temp) > 0:
+    categorized['score'][temp[0]] += 10
 
-categorized['score'][temp[0]] += 10
-categorized['score'][temp2[0]] += 0
-
-
-print('SUB1')
-print(input)
-print(categorized)
-
-
-categorized = categorized.sort_values(["score"], ascending = [False])
+categorized = categorized.sort_values(["score"], ascending=[False])
+categorized = categorized.reset_index(drop=True)
 
 print('sort')
 print(categorized)
 print('')
 print('########RESULT########')
-print(categorized['name'])
+print(categorized['Name'])
 
+end = time.time()
 
-
-
-
-
-
-
-
-
+elapsed = end - start
+print('TIME MEASUREMENT')
+print(elapsed)
