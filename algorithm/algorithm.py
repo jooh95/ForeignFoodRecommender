@@ -9,7 +9,7 @@ from typing import Any, Union, List, Iterable
 start = time.time()
 
 input = pd.read_excel('input.xlsx')
-output = pd.read_excel('output2.xlsx')
+output = pd.read_excel('output.xlsx')
 
 # add another column 'score'
 output['score'] = 0
@@ -48,15 +48,12 @@ if len(temp) > 0:
 
 #####Main1 Comparing####
 ##Main1 & 1 comparing
-
 for i in input_main1:
     temp = np.where(categorized['MainIngredient1'] == i)
     temp2 = np.where(categorized['MainIngredient1'] != i)
 
 if len(temp) > 0:
-    categorized['score'][temp[0]] += 30
-if len(temp2) > 0:
-    categorized['score'][temp2[0]] += 5
+    categorized['score'][temp[0]] += 20
 
 ##Main1 & 2 comparing
 for i in input_main1:
@@ -64,7 +61,7 @@ for i in input_main1:
     temp2 = np.where(categorized['MainIngredient2'] != i)
 
 if len(temp) > 0:
-    categorized['score'][temp[0]] += 15
+    categorized['score'][temp[0]] += 13
 
 ##Main1 & 3 comparing
 for i in input_main1:
@@ -72,7 +69,7 @@ for i in input_main1:
     temp2 = np.where(categorized['MainIngredient3'] != i)
 
 if len(temp) > 0:
-    categorized['score'][temp[0]] += 10
+    categorized['score'][temp[0]] += 13
 
 
 ####Main2 Comparing###
@@ -83,9 +80,7 @@ for i in input_main2:
     temp2 = np.where(categorized['MainIngredient2'] != i)
 
 if len(temp) > 0:
-    categorized['score'][temp[0]] += 20
-if len(temp2) > 0:
-    categorized['score'][temp2[0]] += 5
+    categorized['score'][temp[0]] += 13
 
 ##Main2 & 1 comparing
 for i in input_main2:
@@ -93,7 +88,7 @@ for i in input_main2:
     temp2 = np.where(categorized['MainIngredient1'] != i)
 
 if len(temp) > 0:
-    categorized['score'][temp[0]] += 13
+    categorized['score'][temp[0]] += 8
 
 ##Main2 & 3 comparing
 for i in input_main2:
@@ -101,7 +96,7 @@ for i in input_main2:
     temp2 = np.where(categorized['MainIngredient3'] != i)
 
 if len(temp) > 0:
-    categorized['score'][temp[0]] += 10
+    categorized['score'][temp[0]] += 13
 
 ####Main3 Comparing####
 ##Main3 & 3 Comparing
@@ -111,7 +106,7 @@ for i in input_main3:
     temp2 = np.where(categorized['MainIngredient3'] != i)
 
 if len(temp) > 0:
-    categorized['score'][temp[0]] += 15
+    categorized['score'][temp[0]] += 13
 
 ##Main3 & 1 comparing
 for i in input_main3:
@@ -119,7 +114,7 @@ for i in input_main3:
     temp2 = np.where(categorized['MainIngredient1'] != i)
 
 if len(temp) > 0:
-    categorized['score'][temp[0]] += 4
+    categorized['score'][temp[0]] += 8
 
 ##Main3 & 2 comparing
 for i in input_main3:
@@ -127,7 +122,7 @@ for i in input_main3:
     temp2 = np.where(categorized['MainIngredient2'] != i)
 
 if len(temp) > 0:
-    categorized['score'][temp[0]] += 8
+    categorized['score'][temp[0]] += 13
 
 ##Sub1
 for i in input_sub1:
@@ -135,14 +130,14 @@ for i in input_sub1:
     temp2 = np.where(categorized['SubIngredient1'] != i)
 
 if len(temp) > 0:
-    categorized['score'][temp[0]] += 15
+    categorized['score'][temp[0]] += 12
 
 print(categorized)
 
 
-##Drop item if score is under 36
+##Drop item if score is under 50
 for i in categorized['score']:
-    temp = np.where(categorized['score'] <= 36)
+    temp = np.where(categorized['score'] <= 50)
 
 if len(temp) > 0:
     categorized = categorized.drop(temp[0], 0)
@@ -153,13 +148,25 @@ categorized = categorized.sort_values(["score"], ascending=[False])
 categorized = categorized.reset_index(drop=True)
 
 
+
+
+##Cut if result is more than 4
+length = len(categorized)
+if length >= 4:
+    categorized = categorized.drop(categorized.index[3 :length])
+
+
+
+
+
+
 print('sort')
 print(categorized)
 print('')
+print(input)
 print('########RESULT########')
 print(categorized['Name'])
 end = time.time()
-
 elapsed = end - start
 print('')
 print('')
