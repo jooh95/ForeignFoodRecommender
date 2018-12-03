@@ -8,8 +8,8 @@ from typing import Any, Union, List, Iterable
 ##time measuring
 start = time.time()
 
-input = pd.read_excel('input.xlsx')
-output = pd.read_excel('output.xlsx')
+input = pd.read_excel('input2.xlsx')
+output = pd.read_excel('output3.xlsx')
 
 # add another column 'score'
 output['score'] = 0
@@ -132,12 +132,15 @@ for i in input_sub1:
 if len(temp) > 0:
     categorized['score'][temp[0]] += 12
 
-print(categorized)
+
+##Sorting  by score
+categorized = categorized.sort_values(["score"], ascending=[False])
+categorized = categorized.reset_index(drop=True)
 
 
 ##Drop item if score is under 50
 for i in categorized['score']:
-    temp = np.where(categorized['score'] <= 50)
+    temp = np.where(categorized['score'] < categorized['score'][2])
 
 if len(temp) > 0:
     categorized = categorized.drop(temp[0], 0)
@@ -146,17 +149,6 @@ if len(temp) > 0:
 ##Sorting  by score
 categorized = categorized.sort_values(["score"], ascending=[False])
 categorized = categorized.reset_index(drop=True)
-
-
-
-
-##Cut if result is more than 4
-length = len(categorized)
-if length >= 4:
-    categorized = categorized.drop(categorized.index[3 :length])
-
-
-
 
 
 
