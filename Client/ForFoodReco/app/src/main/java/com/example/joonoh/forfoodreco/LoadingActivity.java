@@ -35,9 +35,9 @@ public class LoadingActivity extends Activity {
 
     String t_data;
 
-    String key = "AIzaSyD2pVXUddcdEasBJPfLylj91HsFxHaq7p0";
+    String key = "insert your good api key";
 
-    String kakao_key = "KakaoAK 8ee4cb57a2fefea0816aab7090190b44";
+    String kakao_key = "insert your kakao api key";
 
     byte[] byteArray;
 
