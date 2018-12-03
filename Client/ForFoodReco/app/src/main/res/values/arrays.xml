@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="search_start">
+        <item>한국</item>
+        <item>일본</item>
+        <item>중국</item>
+    </string-array>
+
+    <string-array name="search_end">
+        <item>한국</item>
+        <item>일본</item>
+        <item>중국</item>
+    </string-array>
+</resources>

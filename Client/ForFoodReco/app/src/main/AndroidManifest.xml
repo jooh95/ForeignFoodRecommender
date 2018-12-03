@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.joonoh.forfoodreco">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-feature android:name="android.hardware.location.gps" />
+
+
+    <application  android:hardwareAccelerated="true"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_icon"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
+        <!--<meta-data android:name="com.google.android.geo.v2.API_KEY" android:value="AIzaSyBCXxskVOciO7tlqD7-RR56MrFQGitL-30"/>-->
+        <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyCfVaSQ7rrTlsMOtivTD1KgqrP5_2h5u2U"/>
+        <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
+
+        <activity android:name=".Splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".NoResultActivity" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".LoadingActivity"
+            android:parentActivityName=".MainActivity">
+
+        </activity>
+        <activity android:name=".ResultActivity"
+            android:parentActivityName=".MainActivity">
+
+        </activity>
+        <activity android:name=".ResultFragment2"
+            android:parentActivityName=".LoadingActivity">
+
+        </activity>
+        <activity android:name=".ResultFragment"
+            android:parentActivityName=".MainActivity">
+
+        </activity>
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings" />
+
+        <activity android:name=".HelpActivity"
+            android:parentActivityName=".MainActivity">
+        </activity>
+
+        <activity android:name=".MapsActivity"
+            android:parentActivityName=".MainActivity">
+        </activity>
+
+        <!--<meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version">-->
+        <!--</meta-data>-->
+
+
+
+
+    </application>
+
+</manifest>

@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/layout_root">
+
+    <include
+        layout = "@layout/app_bar"
+        android:id="@+id/app_bar"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        >
+
+    </include>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="20dp">
+
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:src="@drawable/no_food_big"
+                android:id="@+id/foodImage"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/food_name"
+                android:text="음식 이름"
+                android:textSize="20dp"
+                android:layout_marginTop="5dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/food_intro"
+                android:id="@+id/f_intro"
+                android:textSize="20dp"
+                android:layout_marginTop="20dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/food_intro"
+                android:textSize="20dp"
+                android:layout_marginTop="5dp"
+                android:text="음식 소개를 써라."
+                />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/food_class"
+                android:id="@+id/food_category"
+                android:textSize="20dp"
+                android:layout_marginTop="20dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/food_class"
+                android:textSize="20dp"
+                android:layout_marginTop="5dp"
+                android:text="분류를 써라."
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/f_cook"
+                android:textSize="20dp"
+                android:layout_marginTop="20dp"
+                android:text="Cookery"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/food_cook"
+                android:textSize="20dp"
+                android:layout_marginTop="5dp"
+                android:text="조리법 써라."
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/main_ingr"
+                android:id="@+id/main_ingr"
+                android:textSize="20dp"
+                android:layout_marginTop="20dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/main_ingr1"
+                android:textSize="20dp"
+                android:layout_marginTop="5dp"
+                android:text="재료1를 써라."
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/main_ingr2"
+                android:textSize="20dp"
+                android:layout_marginTop="5dp"
+                android:text="재료2를 써라."
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/main_ingr3"
+                android:textSize="20dp"
+                android:layout_marginTop="5dp"
+                android:text="재료3를 써라."
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text = "@string/sub_ingr"
+                android:id="@+id/sub_ingr"
+                android:textSize="20dp"
+                android:layout_marginTop="20dp"
+                />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/sub_ingr1"
+                android:textSize="20dp"
+                android:layout_marginTop="5dp"
+                android:text="부재료1를 써라."
+                />
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:id="@+id/sub_ingr2"-->
+                <!--android:textSize="20dp"-->
+                <!--android:layout_marginTop="5dp"-->
+                <!--android:text="부재료2를 써라."-->
+                <!--/>-->
+
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:id="@+id/sub_ingr3"-->
+                <!--android:textSize="20dp"-->
+                <!--android:layout_marginTop="5dp"-->
+                <!--android:text="부재료3를 써라."-->
+                <!--android:layout_marginBottom="20dp"-->
+                <!--/>-->
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+
+
+
+
+
+
+
+
+</LinearLayout>
